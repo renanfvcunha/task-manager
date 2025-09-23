@@ -19,7 +19,6 @@ export class CreateTaskUseCase {
     const task = new Task()
     task.title = data.title
     task.description = data.description
-    task.completed = data.completed
 
     await this.taskValidator.create(task)
 

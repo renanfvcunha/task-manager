@@ -1,0 +1,16 @@
+import type { Task } from "../../../domain/entities/Task.js";
+import type { ITaskRepository } from "../../../domain/repositories/ITaskRepository.js";
+import { db } from "./index.js";
+
+export class PrismaTaskRepository implements ITaskRepository {
+  async create(task: Task): Promise<Task> {
+    const created = await db.task.create({
+      data: {
+        title: task.title,
+        description: task.description
+      }
+    })
+
+    return created
+  }
+}
