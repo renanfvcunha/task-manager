@@ -1,5 +1,5 @@
 datasource db {
-  url      = env("postgres://127.0.01.01:5432/task-manager")
+  url      = "postgres://postgres:docker@127.0.0.1:5432/task-manager"
   provider = "postgresql"
 }
 
@@ -15,4 +15,6 @@ model Task {
   completed   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
+
+  @@map("tasks")
 }
