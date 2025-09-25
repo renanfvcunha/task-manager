@@ -1,0 +1,10 @@
+@server_url = http://localhost:3050
+
+### Create task
+POST {{server_url}}/task
+Content-Type: application/json
+
+{
+  "title": "Task 2",
+  "description": "In this task I have another thing to do."
+}

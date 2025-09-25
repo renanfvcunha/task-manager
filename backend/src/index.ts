@@ -1,8 +1,11 @@
 import fastify from 'fastify'
+import { taskRoutes } from './presentation/routes/task.routes.js'
 
 const app = fastify({
   logger: true
 })
+
+app.register(taskRoutes)
 
 async function start(): Promise<void> {
   try {
