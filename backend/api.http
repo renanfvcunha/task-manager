@@ -11,3 +11,6 @@ Content-Type: application/json
 
 ### Find all tasks
 GET {{server_url}}/task
+
+### Find one task
+GET {{server_url}}/task/1bcad8f7-c8e9-4906-88ee-15311a8a6041

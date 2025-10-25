@@ -1,6 +1,6 @@
 import { z } from "zod";
-import type { ITaskValidator } from "../../domain/services/ITaskValidator.js";
-import type { CreateTaskDTO } from "../../application/dto/CreateTaskDTO.js";
+import type { ITaskValidator } from "~/domain/services/ITaskValidator.js";
+import type { CreateTaskDTO } from "~/application/dto/CreateTaskDTO.js";
 
 export class TaskValidator implements ITaskValidator {
   async create(data: CreateTaskDTO): Promise<void> {
@@ -11,5 +11,12 @@ export class TaskValidator implements ITaskValidator {
     })
 
     await z.safeParseAsync(schema, data)
+  }
+
+  async checkValidUUID(id: string): Promise<boolean> {
+    const schema = z.uuidv4()
+    const result = await z.safeParseAsync(schema, id)
+
+    return result.success
   }
 }

@@ -19,4 +19,14 @@ export class PrismaTaskRepository implements ITaskRepository {
 
     return tasks
   }
+
+  async find(id: string): Promise<Task | null> {
+    const task = await db.task.findFirst({
+      where: {
+        id
+      }
+    })
+
+    return task
+  }
 }
