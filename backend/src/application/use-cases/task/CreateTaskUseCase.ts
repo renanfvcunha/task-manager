@@ -1,7 +1,7 @@
-import { Task } from "../../domain/entities/Task.js";
-import type { ITaskRepository } from "../../domain/repositories/ITaskRepository.js";
-import type { ITaskValidator } from "../../domain/services/ITaskValidator.js";
-import type { CreateTaskDTO } from "../dto/CreateTaskDTO.js";
+import type { CreateTaskDTO } from "~/application/dto/CreateTaskDTO.js";
+import { Task } from "~/domain/entities/Task.js";
+import type { ITaskRepository } from "~/domain/repositories/ITaskRepository.js";
+import type { ITaskValidator } from "~/domain/services/ITaskValidator.js";
 
 export class CreateTaskUseCase {
   taskRepository: ITaskRepository

@@ -1,5 +1,5 @@
-import type { Task } from "../../../domain/entities/Task.js";
-import type { ITaskRepository } from "../../../domain/repositories/ITaskRepository.js";
+import type { Task } from "~/domain/entities/Task.js";
+import type { ITaskRepository } from "~/domain/repositories/ITaskRepository.js";
 import { db } from "./index.js";
 
 export class PrismaTaskRepository implements ITaskRepository {
@@ -12,5 +12,11 @@ export class PrismaTaskRepository implements ITaskRepository {
     })
 
     return created
+  }
+
+  async findAll(): Promise<Task[]> {
+    const tasks = await db.task.findMany()
+
+    return tasks
   }
 }

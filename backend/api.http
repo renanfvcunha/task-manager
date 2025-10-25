@@ -8,3 +8,6 @@ Content-Type: application/json
   "title": "Task 2",
   "description": "In this task I have another thing to do."
 }
+
+### Find all tasks
+GET {{server_url}}/task
