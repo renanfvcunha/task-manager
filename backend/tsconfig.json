@@ -2,11 +2,13 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
-    "rootDir": "./src",
+    // "rootDir": "./src",
     // "outDir": "./dist",
+    "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
     },
+    "noEmit": true,
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
@@ -44,5 +46,5 @@
     "skipLibCheck": true,
     "erasableSyntaxOnly": true
   },
-  "exclude": ["./dist", "**/prisma/generated/**"]
+  "exclude": ["./dist"]
 }

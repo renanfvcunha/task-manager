@@ -1,0 +1,17 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript"
+    },
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "target": "esnext"
+  },
+  "module": {
+    "type": "nodenext",
+    "strict": true,
+    "resolveFully": true
+  }
+}
