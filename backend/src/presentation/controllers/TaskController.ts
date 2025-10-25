@@ -1,7 +1,7 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
 import { CreateTaskUseCase } from "~/application/use-cases/task/CreateTaskUseCase.js";
 import { PrismaTaskRepository } from "~/infrastructure/database/prisma/PrismaTaskRepository.js";
-import { TaskValidator } from "~/infrastructure/validators/TaskValidator.js";
+import { ZodTaskValidator } from "~/infrastructure/validators/ZodTaskValidator.js";
 import type { CreateTaskDTO } from "~/application/dto/CreateTaskDTO.js";
 import { FindAllTasksUseCase } from "~/application/use-cases/task/FindAllTasksUseCase.js";
 import { FindOneTaskUseCase } from "~/application/use-cases/task/FindOneTaskUseCase.js";
@@ -10,7 +10,7 @@ export class TaskController {
   static async createTask(req: FastifyRequest, res: FastifyReply) {
     const data = req.body as CreateTaskDTO
     const repository = new PrismaTaskRepository()
-    const validator = new TaskValidator()
+    const validator = new ZodTaskValidator()
 
     const useCase = new CreateTaskUseCase(repository, validator)
 
@@ -45,7 +45,7 @@ export class TaskController {
   static async findOneTask(req: FastifyRequest, res: FastifyReply) {
     const { id } = req.params as { id: string }
     const repository = new PrismaTaskRepository()
-    const validator = new TaskValidator()
+    const validator = new ZodTaskValidator()
     const useCase = new FindOneTaskUseCase(repository, validator)
     
     try {
