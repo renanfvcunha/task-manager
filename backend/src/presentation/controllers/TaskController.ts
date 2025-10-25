@@ -2,13 +2,13 @@ import type { FastifyReply, FastifyRequest } from "fastify";
 import { CreateTaskUseCase } from "~/application/use-cases/task/CreateTaskUseCase.js";
 import { PrismaTaskRepository } from "~/infrastructure/database/prisma/PrismaTaskRepository.js";
 import { ZodTaskValidator } from "~/infrastructure/validators/ZodTaskValidator.js";
-import type { CreateTaskDTO } from "~/application/dto/CreateTaskDTO.js";
+import type { TaskDTO } from "~/application/dto/TaskDTO.js";
 import { FindAllTasksUseCase } from "~/application/use-cases/task/FindAllTasksUseCase.js";
 import { FindOneTaskUseCase } from "~/application/use-cases/task/FindOneTaskUseCase.js";
 
 export class TaskController {
   static async createTask(req: FastifyRequest, res: FastifyReply) {
-    const data = req.body as CreateTaskDTO
+    const data = req.body as TaskDTO
     const repository = new PrismaTaskRepository()
     const validator = new ZodTaskValidator()
 

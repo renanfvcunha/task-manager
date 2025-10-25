@@ -1,4 +1,4 @@
-import type { CreateTaskDTO } from "~/application/dto/CreateTaskDTO.js";
+import type { TaskDTO } from "~/application/dto/TaskDTO.js";
 import { Task } from "~/domain/entities/Task.js";
 import type { ITaskRepository } from "~/domain/repositories/ITaskRepository.js";
 import type { ITaskValidator } from "~/domain/services/ITaskValidator.js";
@@ -15,7 +15,7 @@ export class CreateTaskUseCase {
     this.taskValidator = taskValidator
   }
 
-  async execute(data: CreateTaskDTO): Promise<Task> {
+  async execute(data: TaskDTO): Promise<Task> {
     const task = new Task()
     task.title = data.title
     task.description = data.description

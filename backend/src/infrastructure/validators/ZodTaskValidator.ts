@@ -1,9 +1,9 @@
 import { z } from "zod";
 import type { ITaskValidator } from "~/domain/services/ITaskValidator.js";
-import type { CreateTaskDTO } from "~/application/dto/CreateTaskDTO.js";
+import type { TaskDTO } from "~/application/dto/TaskDTO.js";
 
 export class ZodTaskValidator implements ITaskValidator {
-  async create(data: CreateTaskDTO): Promise<void> {
+  async create(data: TaskDTO): Promise<void> {
     const schema = z.object({
       title: z.string().min(3).max(255),
       description: z.string().min(3),
