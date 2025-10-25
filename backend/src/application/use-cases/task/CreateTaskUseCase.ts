@@ -20,7 +20,7 @@ export class CreateTaskUseCase {
     task.title = data.title
     task.description = data.description
 
-    await this.taskValidator.create(task)
+    await this.taskValidator.validate(task)
 
     const createdTask = await this.taskRepository.create(task)
     return createdTask

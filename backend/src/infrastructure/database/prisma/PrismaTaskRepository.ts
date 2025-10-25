@@ -29,4 +29,18 @@ export class PrismaTaskRepository implements ITaskRepository {
 
     return task
   }
+
+  async update(id: string, task: Task): Promise<Task> {
+    const result = await db.task.update({
+      where: {
+        id
+      },
+      data: {
+        title: task.title,
+        description: task.description
+      }
+    })
+
+    return result
+  }
 }
