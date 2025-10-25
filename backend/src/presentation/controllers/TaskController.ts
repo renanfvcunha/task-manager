@@ -7,6 +7,7 @@ import { FindAllTasksUseCase } from "~/application/use-cases/task/FindAllTasksUs
 import { FindOneTaskUseCase } from "~/application/use-cases/task/FindOneTaskUseCase.js";
 import { UpdateTaskUseCase } from "~/application/use-cases/task/UpdateTaskUseCase.js";
 import z, { ZodError } from "zod";
+import { DeleteTaskUseCase } from "~/application/use-cases/task/DeleteTaskUseCase.js";
 
 export class TaskController {
   static async createTask(req: FastifyRequest, res: FastifyReply) {
@@ -111,6 +112,38 @@ export class TaskController {
         res.statusCode = 400
         console.log(error.issues)
         res.send({ message: "Input validation error", errors: error.issues.map(issue => `${issue.path}: ${issue.message}`) })
+        return
+      }
+
+      console.error(err)
+      res.statusCode = 500
+      res.send({ message: 'Internal server error', cause: err.stack })
+    }
+  }
+
+  static async deleteTask(req: FastifyRequest, res: FastifyReply) {
+    const { id } = req.params as { id: string }
+    const validator = new ZodTaskValidator()
+    const repository = new PrismaTaskRepository()
+    const useCase = new DeleteTaskUseCase(repository, validator)
+
+    try {
+      await useCase.execute(id)
+
+      res.statusCode = 204
+      res.send()
+    } catch (error) {
+      const err = error as Error
+
+      if (err.message === 'invalidUUID') {
+        res.statusCode = 400
+        res.send({ message: 'Invalid ID' })
+        return
+      }
+
+      if (err.message === 'taskNotFound') {
+        res.statusCode = 404
+        res.send({ message: 'Task not found' })
         return
       }
 

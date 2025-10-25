@@ -23,3 +23,6 @@ Content-Type: application/json
   "title": "Task 2",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar leo in velit auctor, nec congue sapien imperdiet. Phasellus a ultrices lorem. Suspendisse convallis aliquet augue quis condimentum. Aliquam faucibus placerat porta. Duis a nibh nunc. Sed quis enim eros. Pellentesque non dapibus ligula, a volutpat lorem. Quisque eget suscipit enim. Sed egestas finibus sagittis. Praesent ut ipsum in libero vulputate placerat vitae vitae metus. In porttitor velit vel diam tempus condimentum a in mi. Phasellus nisl neque, sodales ut diam non, commodo varius purus. Proin vulputate eget nunc a porta. Pellentesque eu semper dui. Sed auctor ut nisl eget feugiat."
 }
+
+### Delete task
+DELETE {{server_url}}/task/1bcad8f7-c8e9-4906-88ee-15311a8a6041
